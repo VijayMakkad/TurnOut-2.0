@@ -1,15 +1,16 @@
 //something
 import { CameraView, useCameraPermissions } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+import { useRouter } from 'expo-router';
+import jsQR from 'jsqr';
 import { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import scanImg from '../../assets/qr-code-scan.png';
-import flipImg from '../../assets/flip.png';
-import flashImg from '../../assets/flash.png';
-import imgImg from '../../assets/image.png';
+
 import closeImg from '../../assets/close.png';
-import jsQR from 'jsqr';
-import { useRouter } from 'expo-router';
+import flashImg from '../../assets/flash.png';
+import flipImg from '../../assets/flip.png';
+import imgImg from '../../assets/image.png';
+import scanImg from '../../assets/qr-code-scan.png';
 
 export default function Home() {
   const [facing, setFacing] = useState('back');
@@ -24,7 +25,7 @@ export default function Home() {
   const isScanning = useRef(false); // Use useRef to track scan status
 
   const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],

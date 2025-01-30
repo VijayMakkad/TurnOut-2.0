@@ -1,6 +1,6 @@
 {
   "cesVersion": "2.12.1",
-  "projectName": "turnOut 2.0",
+  "projectName": "turnout-app",
   "packages": [
     {
       "name": "expo-router",

@@ -1,4 +1,7 @@
+import { useRouter } from 'expo-router';
+import { AnimatePresence, MotiView } from 'moti';
 import React, { useState, useEffect } from 'react';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
@@ -6,9 +9,6 @@ import Animated, {
   withSpring,
   runOnJS,
 } from 'react-native-reanimated';
-import { useRouter } from 'expo-router';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
-import { AnimatePresence, MotiView } from 'moti';
 
 export default function Home() {
   const router = useRouter();
@@ -62,14 +62,13 @@ export default function Home() {
   }));
 
   return (
-    <View className="flex-1 bg-[#FDB623] justify-between items-center">
+    <View className="flex-1 items-center justify-between bg-[#FDB623]">
       {/* QR Code Section */}
       <MotiView
-        className="flex-1 justify-center items-center"
+        className="flex-1 items-center justify-center"
         from={{ opacity: 0, translateY: -50 }}
         animate={{ opacity: 1, translateY: 0 }}
-        transition={{ type: 'spring', damping: 10 }}
-      >
+        transition={{ type: 'spring', damping: 10 }}>
         <Image
           source={require('../assets/Group 10 (1).png')}
           style={{ width: 200, height: 200 }}
@@ -96,8 +95,7 @@ export default function Home() {
             paddingBottom: 20,
             width: '100%',
           },
-        ]}
-      >
+        ]}>
         {/* Drag Handle */}
         <GestureDetector gesture={gesture}>
           <Animated.View
@@ -122,10 +120,8 @@ export default function Home() {
         </GestureDetector>
 
         {/* Title & Description */}
-        <Text className="text-white font-bold text-lg text-center mt-2">
-          Get Started
-        </Text>
-        <Text className="text-white text-center text-sm mt-2 opacity-80 px-4">
+        <Text className="mt-2 text-center text-lg font-bold text-white">Get Started</Text>
+        <Text className="mt-2 px-4 text-center text-sm text-white opacity-80">
           Go and enjoy our features for free and make your life easy with us.
         </Text>
 
@@ -136,15 +132,13 @@ export default function Home() {
               from={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ type: 'spring', damping: 10 }}
-            >
+              transition={{ type: 'spring', damping: 10 }}>
               <TouchableOpacity
-                className="bg-[#FDB623] rounded-xl py-3 px-[86px] mt-12 flex-row items-center"
+                className="mt-12 flex-row items-center rounded-xl bg-[#FDB623] px-[86px] py-3"
                 activeOpacity={0.8}
-                onPress={() => router.push('/(drawer)')}
-              >
-                <Text className="text-black font-bold mr-2">Let’s Start</Text>
-                <Text className="text-black text-lg">→</Text>
+                onPress={() => router.push('/(drawer)')}>
+                <Text className="mr-2 font-bold text-black">Let’s Start</Text>
+                <Text className="text-lg text-black">→</Text>
               </TouchableOpacity>
             </MotiView>
           )}

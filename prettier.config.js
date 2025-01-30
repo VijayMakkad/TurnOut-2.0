@@ -4,8 +4,7 @@ module.exports = {
   singleQuote: true,
   bracketSameLine: true,
   trailingComma: 'es5',
-  
-  plugins: [require.resolve("prettier-plugin-tailwindcss")],
-  tailwindAttributes: ["className"],
-  
+  ignorePatterns: ['**/node_modules/**', '**/.next/**', '**/.vercel/**', 'database.types.ts'],
+  plugins: [require.resolve('prettier-plugin-tailwindcss')],
+  tailwindAttributes: ['className'],
 };
