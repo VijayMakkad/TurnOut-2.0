@@ -1,5 +1,5 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
-import { ChevronLeft, Github, Linkedin } from 'lucide-react-native';
 import type React from 'react';
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView, StatusBar, Linking } from 'react-native';
@@ -50,10 +50,10 @@ const DeveloperCard: React.FC<DeveloperDetails> = ({
           <Text className="px-2 text-center text-sm text-white">{details}</Text>
           <View className="mt-4 flex-row justify-center">
             <TouchableOpacity onPress={() => Linking.openURL(gitHub)}>
-              <Github className="mx-3 h-[50px] w-[50px]" />
+              <AntDesign name="github" className="mx-3 h-[50px] w-[50px]" />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => Linking.openURL(linkDin)}>
-              <Linkedin className="mx-3 h-[50px] w-[50px]" />
+              <AntDesign name="linkedin-square" className="mx-3 h-[50px] w-[50px]" />
             </TouchableOpacity>
           </View>
           <TouchableOpacity
@@ -102,7 +102,7 @@ const DeveloperScreen: React.FC = () => {
       <StatusBar barStyle="light-content" backgroundColor="#333" />
       <View className="absolute left-5 top-12 z-10 mt-5 rounded-xl bg-[#333] p-2 shadow-lg shadow-black">
         <TouchableOpacity onPress={() => router.back()}>
-          <ChevronLeft color="#FDB623" size={24} />
+          <AntDesign name="left" color="#FDB623" size={24} />
         </TouchableOpacity>
       </View>
 

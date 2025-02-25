@@ -2,13 +2,7 @@ import { useRouter } from 'expo-router';
 import { AnimatePresence, MotiView } from 'moti';
 import React, { useState, useEffect } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import { GestureDetector, Gesture } from 'react-native-gesture-handler';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  runOnJS,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 
 export default function Home() {
   const router = useRouter();
@@ -17,35 +11,6 @@ export default function Home() {
   const dragY = useSharedValue(0);
   const dragOpacity = useSharedValue(1);
   const blackBoxHeight = useSharedValue(0);
-
-  const resetStates = () => {
-    dragY.value = 0;
-    dragOpacity.value = 1;
-    blackBoxHeight.value = 0;
-  };
-
-  const navigateToTabs = () => {
-    runOnJS(resetStates)();
-    router.push('/(drawer)/scanner');
-  };
-
-  const gesture = Gesture.Pan()
-    .onUpdate((e) => {
-      dragY.value = e.translationY;
-      dragOpacity.value = Math.max(0, 1 - Math.abs(e.translationY) / 300);
-    })
-    .onEnd((e) => {
-      if (e.translationY < -100) {
-        dragY.value = withSpring(-300, {}, (finished) => {
-          if (finished) {
-            runOnJS(navigateToTabs)();
-          }
-        });
-      } else {
-        dragY.value = withSpring(0);
-        dragOpacity.value = withSpring(1);
-      }
-    });
 
   // Animate the entry height of the black section
   useEffect(() => {
@@ -97,27 +62,25 @@ export default function Home() {
           },
         ]}>
         {/* Drag Handle */}
-        <GestureDetector gesture={gesture}>
-          <Animated.View
-            style={[
-              {
-                backgroundColor: 'white',
-                width: 100,
-                height: 5,
-                borderRadius: 10,
-                marginBottom: 30,
-                borderWidth: 2,
-                borderColor: '#fff',
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.3,
-                shadowRadius: 4,
-                elevation: 5,
-              },
-              animatedStyles,
-            ]}
-          />
-        </GestureDetector>
+        <Animated.View
+          style={[
+            {
+              backgroundColor: 'white',
+              width: 100,
+              height: 5,
+              borderRadius: 10,
+              marginBottom: 30,
+              borderWidth: 2,
+              borderColor: '#fff',
+              shadowColor: '#000',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.3,
+              shadowRadius: 4,
+              elevation: 5,
+            },
+            animatedStyles,
+          ]}
+        />
 
         {/* Title & Description */}
         <Text className="mt-2 text-center text-lg font-bold text-white">Get Started</Text>
@@ -136,7 +99,7 @@ export default function Home() {
               <TouchableOpacity
                 className="mt-12 flex-row items-center rounded-xl bg-[#FDB623] px-[86px] py-3"
                 activeOpacity={0.8}
-                onPress={() => router.push('/(drawer)/scanner')}>
+                onPress={() => router.push('/more')}>
                 <Text className="mr-2 font-bold text-black">Let's Start</Text>
                 <Text className="text-lg text-black">→</Text>
               </TouchableOpacity>

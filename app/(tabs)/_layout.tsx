@@ -1,12 +1,12 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
-import { MoreHorizontal, QrCode } from 'lucide-react-native';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 
 interface AnimatedIconProps {
   focused: boolean;
   color: string;
-  IconComponent: React.ComponentType<any>;
+  IconComponent: boolean;
   label: string;
 }
 
@@ -52,7 +52,11 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({ focused, color, IconCompone
             },
           ]}
         />
-        <IconComponent color={focused ? '#000' : '#fff'} size={28} />
+        {IconComponent ? (
+          <Ionicons name="qr-code-outline" size={32} color="black" />
+        ) : (
+          <Ionicons name="ellipsis-horizontal" size={32} color="black" />
+        )}
       </View>
       <Text style={[styles.tabLabel, { color }]}>{label}</Text>
       <Animated.View
@@ -68,7 +72,7 @@ const AnimatedIcon: React.FC<AnimatedIconProps> = ({ focused, color, IconCompone
   );
 };
 
-export default function TabLayout() {
+export default function RootLayout() {
   return (
     <Tabs
       screenOptions={({ route }) => ({
@@ -93,7 +97,7 @@ export default function TabLayout() {
         },
         tabBarLabel: () => null,
         tabBarIcon: ({ focused, color }) => {
-          const IconComponent = route.name === 'scanner' ? QrCode : MoreHorizontal;
+          const IconComponent = route.name === 'scanner';
           const label = route.name === 'scanner' ? 'Scanner' : 'More';
           return (
             <AnimatedIcon
@@ -105,8 +109,8 @@ export default function TabLayout() {
           );
         },
       })}>
-      <Tabs.Screen name="scanner" options={{ title: 'Scanner' }} />
-      <Tabs.Screen name="more" options={{ title: 'More' }} />
+      <Tabs.Screen name="scanner" options={{ href: { pathname: '/scanner' }, title: 'Scanner' }} />
+      <Tabs.Screen name="more" options={{ href: { pathname: '/more' }, title: 'More' }} />
     </Tabs>
   );
 }

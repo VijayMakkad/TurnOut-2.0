@@ -1,8 +1,8 @@
 'use client';
 
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { useFocusEffect } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
-import { History, Settings, Code, ScanQrCode, User } from 'lucide-react-native';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Animated, View, Text, Pressable, StatusBar, Image } from 'react-native';
 
@@ -11,10 +11,10 @@ const options: {
   icon: any;
   route: '/history' | '/attendance' | '/options' | '/developer';
 }[] = [
-  { name: 'History', icon: History, route: '/history' },
-  { name: 'Attendance', icon: User, route: '/attendance' },
-  { name: 'Settings', icon: Settings, route: '/options' },
-  { name: 'Developers', icon: Code, route: '/developer' },
+  { name: 'History', icon: 'clockcircle', route: '/history' },
+  { name: 'Attendance', icon: 'user', route: '/attendance' },
+  { name: 'Settings', icon: 'setting', route: '/options' },
+  { name: 'Developers', icon: 'codesquare', route: '/developer' },
 ];
 
 export default function QRGeneratorScreen() {
@@ -55,8 +55,8 @@ export default function QRGeneratorScreen() {
           <Text className="text-3xl font-bold text-white">TurnOut</Text>
           <Pressable
             className="rounded-full bg-[#444] p-3 active:bg-[#555]"
-            onPress={() => router.push('/(drawer)/scanner')}>
-            <ScanQrCode color="#FDB623" size={24} />
+            onPress={() => router.push('/scanner')}>
+            <AntDesign name="qrcode" color="#FDB623" size={24} />
           </Pressable>
         </View>
       </View>
@@ -100,7 +100,7 @@ export default function QRGeneratorScreen() {
               ]}>
               <View className="flex-row items-center p-4">
                 <View className="mr-4 rounded-full p-3">
-                  <Icon color="#FDB623" size={24} />
+                  <AntDesign name={Icon} color="#FDB623" size={24} />
                 </View>
                 <Text className="flex-1 text-lg font-semibold text-white">{name}</Text>
               </View>

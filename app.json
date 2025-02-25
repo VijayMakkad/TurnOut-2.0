@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "turnout-app",
+    "name": "turnout",
     "slug": "turnout-app",
     "version": "2.0.0",
     "scheme": "turnout-app",
@@ -24,6 +24,18 @@
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
           "recordAudioAndroid": true
         }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0F0F0F",
+          "image": "./assets/adaptive-.png",
+          "dark": {
+            "image": "./assets/adaptive-icon.png",
+            "backgroundColor": "#0F0F0F"
+          },
+          "imageWidth": 300
+        }
       ]
     ],
     "newArchEnabled": true,
@@ -35,20 +47,25 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/adaptive-icon.png",
+      "resizeMode": "cover",
       "backgroundColor": "#0F0F0F"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.foundersclub.turnoutapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0F0F0F"
       },
-      "package": "com.foundersclub.turnoutapp"
+      "package": "com.foundersclub.turnoutapp",
+      "permissions": ["android.permission.CAMERA", "android.permission.RECORD_AUDIO"]
     },
     "extra": {
       "router": {

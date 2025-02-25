@@ -12,7 +12,6 @@ import {
   TextInput,
 } from 'react-native';
 
-import BackButton from '~/components/BackButton';
 import type { Database } from '~/database.types';
 import { supabase } from '~/utils/supabase';
 
@@ -180,8 +179,6 @@ export default function AttendanceScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <BackButton />
-
         <TextInput
           style={styles.searchBar}
           placeholder="Search emails..."

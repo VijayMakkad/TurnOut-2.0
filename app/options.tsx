@@ -1,5 +1,5 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { useRouter } from 'expo-router';
-import { ChevronLeft, Bell, Star, Share, Shield, Vibrate } from 'lucide-react-native';
 import type React from 'react';
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StatusBar, Switch } from 'react-native';
@@ -14,7 +14,7 @@ const SettingsScreen: React.FC = () => {
         <TouchableOpacity
           onPress={() => router.back()}
           className="rounded-lg bg-[#222] p-3 shadow-lg">
-          <ChevronLeft color="#FDB623" size={24} />
+          <AntDesign name="left" color="#FDB623" size={24} />
         </TouchableOpacity>
       </View>
 
@@ -26,7 +26,7 @@ const SettingsScreen: React.FC = () => {
 
         <View className="space-y-4">
           <SettingItem
-            icon={<Vibrate size={24} color="#FDB623" />}
+            icon={<AntDesign name="shake" size={24} color="#FDB623" />}
             title="Vibrate"
             description="Vibration when scan is done."
             controlElement={<CustomSwitch defaultChecked />}
@@ -34,7 +34,7 @@ const SettingsScreen: React.FC = () => {
         </View>
         <View className="mt-3 space-y-4">
           <SettingItem
-            icon={<Bell size={24} color="#FDB623" />}
+            icon={<AntDesign name="bells" size={24} color="#FDB623" />}
             title="Beep"
             description="Beep when scan is done."
             controlElement={<CustomSwitch defaultChecked={false} />}
@@ -45,19 +45,19 @@ const SettingsScreen: React.FC = () => {
 
         <View className="overflow-hidden rounded-2xl bg-[#222]">
           <SupportItem
-            icon={<Star size={24} color="#FDB623" />}
+            icon={<AntDesign name="star" size={24} color="#FDB623" />}
             title="Rate Us"
             description="Your best reward to us."
           />
           <View className="h-[0.5px] bg-gray-600" />
           <SupportItem
-            icon={<Share size={24} color="#FDB623" />}
+            icon={<AntDesign name="sharealt" size={24} color="#FDB623" />}
             title="Share"
             description="Share app with others."
           />
           <View className="h-[0.5px] bg-gray-600" />
           <SupportItem
-            icon={<Shield size={24} color="#FDB623" />}
+            icon={<AntDesign name="Safety" size={24} color="#FDB623" />}
             title="Privacy Policy"
             description="Follow our policies that benefits you."
           />

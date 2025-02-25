@@ -10,7 +10,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import CustomSupabaseError from '../components/CustomSupabaseError';
 
-import BackButton from '~/components/BackButton';
 import { supabase } from '~/utils/supabase';
 
 // Keep the splash screen visible while we fetch resources
@@ -77,7 +76,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <Stack initialRouteName="index" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" options={{ title: 'Home' }} />
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
           name="attendance"
           options={{
@@ -85,7 +84,6 @@ export default function RootLayout() {
             headerShown: false,
             headerStyle: { backgroundColor: '#333333' },
             headerTitleStyle: { color: '#f0f0f0' },
-            headerLeft: () => <BackButton />,
             presentation: 'fullScreenModal',
           }}
         />

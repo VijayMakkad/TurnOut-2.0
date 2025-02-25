@@ -1,6 +1,6 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ChevronLeft } from 'lucide-react-native';
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -138,7 +138,7 @@ export default function HistoryScreen() {
     <View style={styles.container}>
       <View style={styles.backButtonContainer}>
         <TouchableOpacity onPress={() => router.back()}>
-          <ChevronLeft color="#FDB623" size={24} />
+          <AntDesign name="left" color="#FDB623" size={24} />
         </TouchableOpacity>
       </View>
 
